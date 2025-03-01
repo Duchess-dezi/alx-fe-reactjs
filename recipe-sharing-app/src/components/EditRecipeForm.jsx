@@ -8,8 +8,8 @@ const EditRecipeForm = ({ recipe, onClose }) => {
     const [ingredients, setIngredients] = useState(recipe.ingredients.join(','));
 
     //To handle form submitt
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         //To convert ingredients strings to array
         const updatedIngredients = ingredients.split(',').map((item) => item.trim());
         //To create the updated recipe object

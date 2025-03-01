@@ -7,6 +7,7 @@ const useRecipeStore = create((set) => ({
   addRecipe: (newRecipe) =>
     set((state) => ({
       recipes: [...state.recipes, newRecipe],
+      setRecipes: (recipes) => set({ recipes })
     })),
 
   // Action: Delete a recipe by its ID
