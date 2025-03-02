@@ -34,5 +34,8 @@ const RecipeList = () => {
         </div>
     );
 };
+<<<<<<< HEAD:recipe-sharing-app/src/components/recipeList.jsx
 
+=======
+>>>>>>> 983387543fb83126e4ac48b233d6ae0bd132553f:recipe-sharing-app/src/components/RecipeList.jsx
 export default RecipeList;
