@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useRecipeStore from './recipeStore.js';
 
 const AddRecipeForm = () => {
@@ -14,6 +14,8 @@ const AddRecipeForm = () => {
         addRecipe({ id: Date.now(), title, description });
         setTitle('');
         setDescription('');
+
+        navigate('/recipelist');
     };
 
     return (
@@ -29,7 +31,8 @@ const AddRecipeForm = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Description"
             />
-            <button type="submit">Add Recipe</button>
+
+            <button type="submit">  Add Recipe</button>
         </form>
     );
 };
