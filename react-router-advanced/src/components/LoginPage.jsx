@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
     username: Yup.string().required("Username is required"),
@@ -11,10 +12,12 @@ const validationSchema = Yup.object({
 
 function LoginPage() {
     const { login } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = (values, { resetForm }) => {
         console.log("Formik form data:", values);
-        login(); // ✅ Fix: Removed values
+        login();
+        navigate("/profile");
         resetForm();
     };
 

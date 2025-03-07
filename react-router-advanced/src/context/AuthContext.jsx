@@ -9,14 +9,14 @@ export const AuthProvider = ({ children }) => {
 
   const login = () => {
     setIsAuthenticated(true);
-    const navigate = useNavigate(); // ✅ Moved useNavigate inside function
-    navigate("/profile"); 
+    // const navigate = useNavigate(); // ✅ Moved useNavigate inside function
+    // navigate("/profile"); 
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    const navigate = useNavigate(); // ✅ Moved useNavigate inside function
-    navigate("/login"); 
+    // const navigate = useNavigate(); // ✅ Moved useNavigate inside function
+    // navigate("/login"); 
   };
 
   return (
