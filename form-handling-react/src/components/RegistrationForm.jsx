@@ -10,7 +10,7 @@ const RegistrationForm = () => {
         password: "",
     });
     const { username, email, password } = formData;
-    
+
     const [errors, setErrors] = useState({});
     const handleChange = (e) => {
         const {
@@ -22,74 +22,76 @@ const RegistrationForm = () => {
     };
     const validateForm = () => {
         let newErrors = {};
-        if (!username.trim()) {
-            newErrors.username = "Username is required";
-        }
-        if (!email.trim()) {
-            newErrors.email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = "Invalid email address";
-        }
-        if (!password.trim()) {
-            newErrors.password = "Password is required";
-        } else if (formData.password.length < 7) {
-            newErrors.password = "Password must be at least 7 characters";
-        }
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
+        const validateForm = () => {
+            let newErrors = {};
+            if (!username) {
+                newErrors.username = "Username is required";
+            }
+            if (!email) {
+                newErrors.email = "Email is required";
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                newErrors.email = "Invalid email address";
+            }
+            if (!password) {
+                newErrors.password = "Password is required";
+            } else if (password.length < 7) {
+                newErrors.password = "Password must be at least 7 characters";
+            }
+            setErrors(newErrors);
+            return Object.keys(newErrors).length === 0;
+        };
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            if (validateForm()) {
+                console.log("Controlled form data:", formData);
+                alert("Form submitted successfully!");
+                setFormData({ username: "", email: "", password: "" }); // Reset form
+                setErrors({});
+            }
+        };
+
+        return (
+
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={username}
+                        onChange={handleChange}
+                    />
+                    {errors.username && <div style={{ color: "red" }}>{errors.username}</div>}
+                </div>
+
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={email}
+                        onChange={handleChange}
+                    />
+                    {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
+                </div>
+
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={password}
+                        onChange={handleChange}
+                    />
+                    {errors.password && <div style={{ color: "red" }}>{errors.password}</div>}
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+        );
     };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (validateForm()) {
-            console.log("Controlled form data:", formData);
-            alert("Form submitted successfully!");
-            setFormData({ username: "", email: "", password: "" }); // Reset form
-            setErrors({});
-        }
-    };
 
-    return (
-
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={username}
-                    onChange={handleChange}
-                />
-                {errors.username && <div style={{ color: "red" }}>{errors.username}</div>}
-            </div>
-
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                />
-                {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
-            </div>
-
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={handleChange}
-                />
-                {errors.password && <div style={{ color: "red" }}>{errors.password}</div>}
-            </div>
-
-            <button type="submit">Register</button>
-        </form>
-    );
-};
-
-export default RegistrationForm;
+    export default RegistrationForm;
