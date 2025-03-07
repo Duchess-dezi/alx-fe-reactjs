@@ -9,10 +9,12 @@ const RegistrationForm = () => {
         email: "",
         password: "",
     });
+    const { username, email, password } = formData;
+    
     const [errors, setErrors] = useState({});
     const handleChange = (e) => {
         const {
-            name, value} = e.target;
+            name, value } = e.target;
         setFormData((prevState) => ({
             ...prevState,
             [name]: value
@@ -20,15 +22,15 @@ const RegistrationForm = () => {
     };
     const validateForm = () => {
         let newErrors = {};
-        if (!formData.username.trim()) {
+        if (!username.trim()) {
             newErrors.username = "Username is required";
         }
-        if (!formData.email.trim()) {
+        if (!email.trim()) {
             newErrors.email = "Email is required";
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = "Invalid email address";
         }
-        if (!formData.password.trim()) {
+        if (!password.trim()) {
             newErrors.password = "Password is required";
         } else if (formData.password.length < 7) {
             newErrors.password = "Password must be at least 7 characters";
