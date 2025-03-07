@@ -11,7 +11,8 @@ const RegistrationForm = () => {
     });
     const [errors, setErrors] = useState({});
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {
+            name, value } = e.target;
         setFormData((prevState) => ({
             ...prevState,
             [name]: value
@@ -54,7 +55,7 @@ const RegistrationForm = () => {
                     type="text"
                     id="username"
                     name="username"
-                    value={formData.username}
+                    value={"username"}
                     onChange={handleChange}
                 />
                 {errors.username && <div style={{ color: "red" }}>{errors.username}</div>}
@@ -66,7 +67,7 @@ const RegistrationForm = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
+                    value={"email"}
                     onChange={handleChange}
                 />
                 {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
@@ -78,7 +79,7 @@ const RegistrationForm = () => {
                     type="password"
                     id="password"
                     name="password"
-                    value={formData.password}
+                    value={"password"}
                     onChange={handleChange}
                 />
                 {errors.password && <div style={{ color: "red" }}>{errors.password}</div>}
