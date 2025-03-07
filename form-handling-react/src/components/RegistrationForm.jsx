@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from 'react'
 
+
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         email: '',
@@ -32,7 +33,9 @@ const RegistrationForm = () => {
             alert('Form Submitted successfully!');
         };
     };
+    
     return (
+       
         <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
             <input
