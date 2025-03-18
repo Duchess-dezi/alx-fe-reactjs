@@ -26,10 +26,10 @@ const AddRecipeForm = ({ onAddRecipe }) => {
         const newRecipe = {
             id: Date.now(),
             title,
-            summary: steps.substring(0, 100) + "...", // Short summary
+            summary: instructions.substring(0, 100) + "...", // Short summary
             image: "https://via.placeholder.com/150", // Placeholder image
             ingredients: ingredientList,
-            instructions: instructions.split("\n").map((step) => step.trim()),
+            instructions: instructions.split("\n").map((instruction) => instruction.trim()),
         };
 
         // Call the parent function to add the recipe
@@ -62,7 +62,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
 
                 {/* Ingredients */}
                 <div>
-                    <label className="block text-gray-700 font-medium">Ingredients (comma-separated):</label>
+                    <label className="block text-gray-700 font-medium">Ingredients:</label>
                     <textarea
                         className="w-full border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500"
                         value={ingredients}
@@ -76,7 +76,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
                     <label className="block text-gray-700 font-medium">Preparation Steps:</label>
                     <textarea
                         className="w-full border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500"
-                        value={steps}
+                        value={instructions}
                         onChange={(e) => setInstructions(e.target.value)}
                         placeholder="Enter step-by-step preparation"
                     />
