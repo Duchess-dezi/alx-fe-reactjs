@@ -3,12 +3,40 @@
         "id": 1,
         "title": "Spaghetti Carbonara",
         "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-        "image": "https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-pasta-carbonara-italian-food-png-image_10233504.png"
+        "image": "https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-pasta-carbonara-italian-food-png-image_10233504.png",
+        "ingredients": [
+            "200g spaghetti",
+            "100g pancetta",
+            "2 eggs",
+            "50g Parmesan cheese",
+            "Salt & black pepper"
+        ],
+        "instructions": [
+            "Boil pasta until al dente.",
+            "Fry pancetta until crispy.",
+            "Whisk eggs and cheese together.",
+            "Mix everything together and serve."
+        ]
     },
     {
         "id": 2,
         "title": "Chicken Tikka Masala",
         "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-        "image": "https://png.pngtree.com/png-vector/20240626/ourlarge/pngtree-a-dish-of-hot-flavorful-chicken-tikka-masala-png-image_12750535.png"
+        "image": "https://png.pngtree.com/png-vector/20240626/ourlarge/pngtree-a-dish-of-hot-flavorful-chicken-tikka-masala-png-image_12750535.png",
+        "ingredients": [
+            "500g chicken breast",
+            "1 cup yogurt",
+            "1 onion",
+            "2 tomatoes",
+            "1 cup cream",
+            "Spices (turmeric, cumin, coriander, garam masala)"
+        ],
+        "instructions": [
+            "Marinate chicken with yogurt and spices.",
+            "Grill the chicken until cooked.",
+            "Prepare sauce with onions, tomatoes, and cream.",
+            "Mix chicken into the sauce and simmer.",
+            "Serve hot with rice or naan."
+        ]
     }
 ]
