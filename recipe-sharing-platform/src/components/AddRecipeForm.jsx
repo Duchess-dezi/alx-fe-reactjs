@@ -3,7 +3,7 @@ import { useState } from "react";
 const AddRecipeForm = ({ onAddRecipe }) => {
     const [title, setTitle] = useState("");
     const [ingredients, setIngredients] = useState("");
-    const [instructions, setInstructions] = useState("");
+    const [steps, setSteps] = useState("");
     const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
@@ -11,7 +11,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
         setError("");
 
         // Validation checks
-        if (!title.trim() || !ingredients.trim() || !instructions.trim()) {
+        if (!title.trim() || !ingredients.trim() || !steps.trim()) {
             setError("All fields are required.");
             return;
         }
@@ -26,10 +26,10 @@ const AddRecipeForm = ({ onAddRecipe }) => {
         const newRecipe = {
             id: Date.now(),
             title,
-            summary: instructions.substring(0, 100) + "...", // Short summary
+            summary: steps.substring(0, 100) + "...", // Short summary
             image: "https://via.placeholder.com/150", // Placeholder image
             ingredients: ingredientList,
-            instructions: instructions.split("\n").map((instruction) => instruction.trim()),
+            instructions: steps.split("\n").map((step) => step.trim()),
         };
 
         // Call the parent function to add the recipe
@@ -38,7 +38,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
         // Reset form fields
         setTitle("");
         setIngredients("");
-        setInstructions("");
+        setSteps("");
     };
 
     return (
@@ -76,8 +76,8 @@ const AddRecipeForm = ({ onAddRecipe }) => {
                     <label className="block text-gray-700 font-medium">Preparation Steps:</label>
                     <textarea
                         className="w-full border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500"
-                        value={instructions}
-                        onChange={(e) => setInstructions(e.target.value)}
+                        value={steps}
+                        onChange={(e) => setSteps(e.target.value)}
                         placeholder="Enter step-by-step preparation"
                     />
                 </div>
