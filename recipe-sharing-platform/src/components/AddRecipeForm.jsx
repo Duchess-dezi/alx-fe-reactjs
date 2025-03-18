@@ -4,48 +4,50 @@ const AddRecipeForm = ({ onAddRecipe }) => {
     const [title, setTitle] = useState("");
     const [ingredients, setIngredients] = useState("");
     const [steps, setSteps] = useState("");
-    const [error, setError] = useState("");
+    const [errors, setErrors] = useState({}); // State to store validation errors
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setError("");
+    const validate = () => {
+        let tempErrors = {};
 
-        // Validation checks
-        if (!title.trim() || !ingredients.trim() || !steps.trim()) {
-            setError("All fields are required.");
-            return;
-        }
+        if (!title.trim()) tempErrors.title = "Recipe title is required.";
+        if (!ingredients.trim()) tempErrors.ingredients = "Ingredients are required.";
+        if (!steps.trim()) tempErrors.steps = "Preparation steps are required.";
 
         const ingredientList = ingredients.split(",").map((item) => item.trim());
         if (ingredientList.length < 2) {
-            setError("Please enter at least two ingredients, separated by commas.");
-            return;
+            tempErrors.ingredients = "Please enter at least two ingredients.";
         }
 
-        // Create new recipe object
+        setErrors(tempErrors);
+        return Object.keys(tempErrors).length === 0; // Returns true if no errors
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!validate()) return; // Stop submission if validation fails
+
         const newRecipe = {
             id: Date.now(),
             title,
-            summary: steps.substring(0, 100) + "...", // Short summary
-            image: "https://via.placeholder.com/150", // Placeholder image
-            ingredients: ingredientList,
+            summary: steps.substring(0, 100) + "...",
+            image: "https://via.placeholder.com/150",
+            ingredients: ingredients.split(",").map((item) => item.trim()),
             instructions: steps.split("\n").map((step) => step.trim()),
         };
 
-        // Call the parent function to add the recipe
         onAddRecipe(newRecipe);
 
         // Reset form fields
         setTitle("");
         setIngredients("");
         setSteps("");
+        setErrors({});
     };
 
     return (
         <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Add a New Recipe</h2>
-
-            {error && <p className="text-red-500 mb-4">{error}</p>}
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Recipe Title */}
@@ -58,6 +60,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Enter recipe title"
                     />
+                    {errors.title && <p className="text-red-500">{errors.title}</p>}
                 </div>
 
                 {/* Ingredients */}
@@ -69,6 +72,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
                         onChange={(e) => setIngredients(e.target.value)}
                         placeholder="e.g. Flour, Sugar, Butter, Eggs"
                     />
+                    {errors.ingredients && <p className="text-red-500">{errors.ingredients}</p>}
                 </div>
 
                 {/* Preparation Steps */}
@@ -80,6 +84,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
                         onChange={(e) => setSteps(e.target.value)}
                         placeholder="Enter step-by-step preparation"
                     />
+                    {errors.steps && <p className="text-red-500">{errors.steps}</p>}
                 </div>
 
                 {/* Submit Button */}
