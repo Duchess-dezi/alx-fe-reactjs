@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "title": "Spaghetti Carbonara",
+        "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+        "image": "https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-pasta-carbonara-italian-food-png-image_10233504.png"
+    },
+    {
+        "id": 2,
+        "title": "Chicken Tikka Masala",
+        "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+        "image": "https://png.pngtree.com/png-vector/20240626/ourlarge/pngtree-a-dish-of-hot-flavorful-chicken-tikka-masala-png-image_12750535.png"
+    }
+]
