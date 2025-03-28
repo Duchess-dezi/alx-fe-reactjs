@@ -10,13 +10,19 @@ const Search = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
-    setUserData(null);
+    setError(""); // Reset error message before a new search
+    setUserData(null); // Clear previous user data
 
     try {
       const data = await fetchUserData(username);
-      setUserData(data);
+
+      if (data.message === "Not Found") {
+        setError("Looks like we can't find the user");
+      } else {
+        setUserData(data);
+      }
     } catch (err) {
+      console.error("Error fetching user data:", err);
       setError("Looks like we can't find the user");
     } finally {
       setLoading(false);
@@ -38,7 +44,7 @@ const Search = () => {
         </button>
       </form>
 
-     
+      
       {loading && <p className="mt-4 text-gray-700">Loading...</p>}
       {error && <p className="mt-4 text-red-500">{error}</p>}
       {userData && (
