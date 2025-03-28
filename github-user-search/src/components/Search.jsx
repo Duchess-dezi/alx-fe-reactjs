@@ -17,7 +17,7 @@ const Search = () => {
       const data = await fetchUserData(username);
       setUserData(data);
     } catch (err) {
-      setError("Looks like we can't find the user.");
+      setError("Looks like we can't find the user");
     } finally {
       setLoading(false);
     }
@@ -38,7 +38,7 @@ const Search = () => {
         </button>
       </form>
 
-      {/* Conditional Rendering for API Response */}
+     
       {loading && <p className="mt-4 text-gray-700">Loading...</p>}
       {error && <p className="mt-4 text-red-500">{error}</p>}
       {userData && (
